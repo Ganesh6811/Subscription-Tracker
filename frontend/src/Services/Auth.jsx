@@ -1,8 +1,9 @@
 import axios from "axios"; 
+import baseUrl from "../config.js";
 
 export const AuthUser = async () => {
     try {
-        const res = await axios.get("http://localhost:5001/api/auth/check", {
+        const res = await axios.get(`${baseUrl}/api/auth/check`, {
             withCredentials: true,
         });
 
