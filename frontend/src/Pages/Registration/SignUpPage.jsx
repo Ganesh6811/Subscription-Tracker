@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import baseUrl from "../../config.js";
 
 const SignUpPage = () => {
     const [user, setUser] = useState("");
@@ -16,7 +17,7 @@ const SignUpPage = () => {
         }
 
         try {
-            const res = await axios.post("http://localhost:5001/api/auth/signUp", formData);
+            const res = await axios.post(`${baseUrl}/api/auth/signUp`, formData);
             console.log(res.data);
             alert("Registration Successfull");
         }

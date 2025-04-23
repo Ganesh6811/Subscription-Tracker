@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import baseUrl from "../../config.js";
 
 const Profile = () => {
     const [userDetails, setUserDetails] = useState({});
@@ -9,7 +10,7 @@ const Profile = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await axios.get("http://localhost:5001/api/auth/check", {
+            const res = await axios.get(`${baseUrl}/api/auth/check`, {
                 withCredentials: true,
             });
             console.log("response Data:", res.data);
@@ -21,7 +22,7 @@ const Profile = () => {
 
     const handleLogout = async () => {
         try {
-            const res = await axios.get("http://localhost:5001/api/auth/logOut", {
+            const res = await axios.get(`${baseUrl}/api/auth/logOut`, {
                 withCredentials: true,
             });
 

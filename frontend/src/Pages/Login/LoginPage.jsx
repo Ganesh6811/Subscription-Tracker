@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link , useNavigate} from "react-router-dom";
+import baseUrl from "../../config.js";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ export default function LoginPage() {
     const formData = { email, password };
 
     try {
-      const res = await axios.post("http://localhost:5001/api/auth/login", formData, { withCredentials: true, });
+      const res = await axios.post(`${baseUrl}/api/auth/login`, formData, { withCredentials: true, });
       console.log(res.data);  
       window.location.reload();
       navigate("/login");

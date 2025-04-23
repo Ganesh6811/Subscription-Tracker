@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import baseUrl from "../../config.js";
 
 export const HomePage = () => {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -14,7 +15,7 @@ export const HomePage = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/subscriptions", {
+        const res = await axios.get(`${baseUrl}/api/subscriptions`, {
           withCredentials: true,
         });
 
@@ -34,7 +35,7 @@ export const HomePage = () => {
 
   const deleteSubscription = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/subscriptions/${id}`, {
+      await axios.delete(`${baseUrl}/api/subscriptions/${id}`, {
         withCredentials: true,
       });
       setSubscriptions(subscriptions.filter(sub => sub._id !== id));
@@ -56,7 +57,7 @@ export const HomePage = () => {
         category: newSubscriptionCategory,
       };
 
-      const res = await axios.post("http://localhost:5001/api/subscriptions", newSubscription, {
+      const res = await axios.post(`${baseUrl}/api/subscriptions`, newSubscription, {
         withCredentials: true,
       });
 
