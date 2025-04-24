@@ -17,7 +17,7 @@ export default function LoginPage() {
       const res = await axios.post(`${baseUrl}/api/auth/login`, formData, { withCredentials: true, });
       console.log(res.data);  
       window.location.reload();
-      navigate("/login");
+      navigate("/");
     }
     catch (error) {
       console.log("Login Falied:", error);
