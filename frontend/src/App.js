@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HomePage } from './Pages/Home/HomePage.jsx';
 import LoginPage from './Pages/Login/LoginPage.jsx';
 import SignUpPage from "./Pages/Registration/SignUpPage.jsx";
@@ -29,14 +29,14 @@ function App() {
 
   return (
     <store.Provider value={[user, setUser]}>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
           <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
           <Route path="/signUp" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
           <Route path="/profile" element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </store.Provider>
   );
 }
